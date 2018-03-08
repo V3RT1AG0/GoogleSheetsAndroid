@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 {
 
     EditText name, contatct, email, address, companyORcollegeName, Myname;
-    Spinner whatDoYouDoSpinner, interestLevelSpinner;
+    Spinner whatDoYouDoSpinner, interestLevelSpinner, paymentMethod, Amount;
     ImageView tick, edit;
     GoogleAccountCredential mCredential;
     Button submit;
@@ -100,6 +100,8 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         progressView.setVisibility(View.GONE);
         edit = findViewById(R.id.edit);
         tick = findViewById(R.id.tick);
+        paymentMethod = findViewById(R.id.PaymentMode);
+        Amount = findViewById(R.id.Amount);
 
         edit.setVisibility(View.VISIBLE);
         tick.setVisibility(View.GONE);
@@ -401,6 +403,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     public void sendDataToGoogleForm(View view)
     {
 //putDataToSheet(mCredential);
+
         try
         {
             if (FieldsAreEmpty())
@@ -408,7 +411,10 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                 Toast.makeText(this, "One or more fields are empty", Toast.LENGTH_SHORT).show();
             } else
             {
-                getResultsFromApi();
+                if (contatct.getText().toString().length() == 10)
+                    getResultsFromApi();
+                else
+                    Toast.makeText(this, "Invalid contact number", Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e)
         {
@@ -505,6 +511,9 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
             row1.add(interestLevelSpinner.getSelectedItem().toString());
             row1.add(MYNAME);
             row1.add(formattedDate);
+            row1.add(Amount.getSelectedItem().toString());
+            row1.add(paymentMethod.getSelectedItem().toString());
+
 
             List<List<Object>> values = Arrays.asList(
                     row1

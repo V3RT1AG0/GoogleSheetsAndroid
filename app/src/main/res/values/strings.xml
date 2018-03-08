@@ -10,4 +10,15 @@
         <item>Not very interested</item>
         <item>Not registered but interested</item>
     </string-array>
+    <string-array name="Amount">
+        <item>50</item>
+        <item>100</item>
+
+    </string-array>
+    <string-array name="ModePayment">
+        <item>Cash</item>
+        <item>Paytm</item>
+        <item>Card</item>
+        <item>Others</item>
+    </string-array>
 </resources>
