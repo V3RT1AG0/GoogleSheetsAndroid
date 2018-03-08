@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1003;
 
     String MYNAME = "unknown";
-    private static final String BUTTON_TEXT = "Call Google Sheets API";
     private static final String PREF_ACCOUNT_NAME = "accountName";
     private static final String[] SCOPES = {SheetsScopes.SPREADSHEETS};
 
@@ -149,10 +148,10 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
             {
                 if (i == 0)
                 {
-                    companyORcollegeName.setHint("Enter Company Name");
+                    companyORcollegeName.setHint("Company Name");
                 } else
                 {
-                    companyORcollegeName.setHint("Enter College name and year");
+                    companyORcollegeName.setHint("College name and year");
                 }
             }
 
@@ -406,7 +405,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         {
             if (FieldsAreEmpty())
             {
-                Toast.makeText(this, "One or more field is empty", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "One or more fields are empty", Toast.LENGTH_SHORT).show();
             } else
             {
                 getResultsFromApi();

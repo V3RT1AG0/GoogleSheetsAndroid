@@ -32,6 +32,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingEnd="5sp"
+            android:inputType="text"
+            android:maxLines="1"
             />
 
             <ImageView
@@ -55,21 +57,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:hint="Enter Name" />
+            android:maxLines="1"
+            android:inputType="text"
+            android:hint="Name" />
 
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:hint="Enter Email" />
+            android:maxLines="1"
+            android:inputType="text"
+            android:hint="Email" />
 
         <EditText
             android:id="@+id/number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="7dp"
-            android:hint="Enter Contact Number"
+            android:hint="Contact"
+            android:maxLines="1"
             android:inputType="number" />
 
         <EditText
@@ -78,7 +85,7 @@
             android:inputType="textMultiLine"
             android:layout_height="wrap_content"
             android:layout_margin="7dp"
-            android:hint="Enter address"
+            android:hint="Address"
             android:maxLength="2000"
             android:maxLines="7"/>
 
@@ -94,7 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="7dp"
-            android:hint="Enter Company Name" />
+            android:hint="Company Name" />
 
         <Spinner
             android:id="@+id/InterestLevel"

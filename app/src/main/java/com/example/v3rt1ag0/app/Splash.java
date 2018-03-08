@@ -17,6 +17,15 @@ public class Splash extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        try
+        {
+            getSupportActionBar().setTitle("IYF, Whiltefield");
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
         SharedPreferences sharedPref = this.getSharedPreferences(
                 "com.userDetails", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = sharedPref.edit();
