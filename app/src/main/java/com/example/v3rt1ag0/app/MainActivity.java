@@ -63,10 +63,11 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
     EditText name, contatct, email, address, companyORcollegeName, Myname;
     Spinner whatDoYouDoSpinner, interestLevelSpinner, paymentMethod, Amount;
+    LinearLayout amountLL, modeOfPayemntLL;
     ImageView tick, edit;
     GoogleAccountCredential mCredential;
     Button submit;
-
+    Boolean SendEmptyFieldsForAmountandPaymentMode = false;
     CircularProgressView progressView;
     String formattedDate;
 
@@ -102,6 +103,8 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         tick = findViewById(R.id.tick);
         paymentMethod = findViewById(R.id.PaymentMode);
         Amount = findViewById(R.id.Amount);
+        modeOfPayemntLL = findViewById(R.id.ModeOfPaymentLL);
+        amountLL = findViewById(R.id.AmountLL);
 
         edit.setVisibility(View.VISIBLE);
         tick.setVisibility(View.GONE);
@@ -142,6 +145,31 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
             e.printStackTrace();
         }
 
+
+        interestLevelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                if (i == 3)
+                {
+                    modeOfPayemntLL.setVisibility(View.GONE);
+                    amountLL.setVisibility(View.GONE);
+                    SendEmptyFieldsForAmountandPaymentMode = true;
+                } else
+                {
+                    modeOfPayemntLL.setVisibility(View.VISIBLE);
+                    amountLL.setVisibility(View.VISIBLE);
+                    SendEmptyFieldsForAmountandPaymentMode = false;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView)
+            {
+
+            }
+        });
 
         whatDoYouDoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
@@ -511,8 +539,16 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
             row1.add(interestLevelSpinner.getSelectedItem().toString());
             row1.add(MYNAME);
             row1.add(formattedDate);
-            row1.add(Amount.getSelectedItem().toString());
-            row1.add(paymentMethod.getSelectedItem().toString());
+
+            if (SendEmptyFieldsForAmountandPaymentMode)
+            {
+                row1.add("-");
+                row1.add("-");
+            } else
+            {
+                row1.add(Amount.getSelectedItem().toString());
+                row1.add(paymentMethod.getSelectedItem().toString());
+            }
 
 
             List<List<Object>> values = Arrays.asList(

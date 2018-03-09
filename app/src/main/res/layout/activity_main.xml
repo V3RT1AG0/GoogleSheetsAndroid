@@ -111,6 +111,7 @@
             android:entries="@array/InterestLevel" />
 
     <LinearLayout
+        android:id="@+id/AmountLL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -131,6 +132,7 @@
             android:entries="@array/Amount" />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/ModeOfPaymentLL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
